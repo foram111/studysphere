@@ -1,0 +1,2 @@
+# studysphere
+Django Project
