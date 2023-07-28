@@ -1,0 +1,93 @@
+{% extends 'root.html' %}
+
+{% block content %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+        color: #333;
+            background-image: url("/media/pencils-eraser-white-background.jpg");
+          background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    }
+
+       .main {
+    background-color: #023181;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+
+
+  .main h1 {
+    font-size: 28px;
+    font-weight: bold;
+   text-align: center;
+
+  }
+
+    .course-update-container {
+        max-width: 800px;
+        margin: 50px auto;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+    }
+
+    .course-update-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .course-update-container form {
+        margin-top: 20px;
+    }
+
+    .course-update-container form label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .course-update-container form input[type="text"],
+    .course-update-container form textarea {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        resize: vertical;
+    }
+
+    .course-update-container form button {
+background-color: darkcyan;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    .course-update-container form button:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div class="main">
+    <h1>Update Course Content</h1>
+</div>
+
+<div class="course-update-container">
+    <h2>Update Course: {{ course.title }}</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Changes</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>StudySphere - E-learning Platform</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .header {
+            background-image: url("/media/gray-abstract-wireframe-technology-background.jpg");
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            height: 490px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        .header img {
+            height: 400px;
+            margin-right: 10px;
+        }
+.header nav a {
+            color: darkcyan;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 20px;
+            padding: 20px 40px;
+            background-color: white;
+            border-radius: 8px;
+
+        }
+
+        .header nav a:hover {
+            background-color: #f2f2f2;
+        }
+
+        .header nav a:hover {
+            background-color: darkcyan;
+            color: white;
+        }
+
+        .footer {
+            background-color: white;
+            color: darkcyan;
+            padding: 20px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        .main-content {
+            text-align: center;
+            margin-top: 0px;
+            padding: 40px;
+            background-color: darkcyan;
+            height: 250px;
+        }
+
+        .main-content h2 {
+            font-size: 35px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .main-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .main-content button {
+            font-size: 20px;
+            background-color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            color: darkcyan;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .main-content button:hover {
+            background-color: #0056b3;
+        }
+            .about-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 50px 0;
+            background-color: #f9f9f9;
+
+        }
+
+        .about-content {
+            max-width: 600px;
+            padding: 20px;
+             margin-left: 50px;
+        }
+
+        .about-content h2 {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .about-image {
+            flex: 1;
+            max-width: 600px;
+
+             margin-right: 50px;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-button {
+            font-size: 24px;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+           background-color: darkcyan;;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .about-button:hover {
+            background-color: #27AE60;
+        }
+
+        .contact-section {
+    background-color: darkcyan;
+            padding: 50px 0;
+            text-align: center;
+color: white;
+        }
+
+        .contact-section h2 {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .contact-section p {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="/media/attachment_32550797-removebg-preview.png" alt="Logo">
+        <nav>
+            <a href="#about">About</a>
+            <a href="#courses">Courses</a>
+            <a href="#contact">Contact</a>
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'register' %}">Register</a>
+        </nav>
+    </div>
+
+    <!-- Main Content Section -->
+    <div class="main-content">
+        <h2>Learn Anything, Anytime, Anywhere</h2>
+        <p>Join our E-learning platform and explore a wide range of courses from expert instructors.</p>
+        <a href="{% url 'register' %}">
+            <button>Get Started</button>
+        </a>
+    </div>
+
+    <div class="about-section">
+        <div class="about-content">
+            <h2>About Us</h2>
+            <p>Welcome to StudySphere, your go-to destination for online learning and personal growth! At StudySphere, we believe that knowledge knows no bounds, and everyone should have the opportunity to learn anything, anytime, and anywhere. Our E-learning platform is designed to provide a seamless and enriching educational experience for learners of all ages and backgrounds.</p>
+            <p>Our mission is to empower individuals to unlock their full potential by offering a diverse range of high-quality courses taught by expert instructors from around the globe. We aim to foster a passion for lifelong learning and equip our learners with the skills and knowledge needed to thrive in a rapidly evolving world.</p>
+
+            <a href="{% url 'register' %}" class="about-button">Start Learning Now</a>
+        </div>
+        <div class="about-image">
+            <img src="/media/1619111145_soDM9U_e_learning.jpg" alt="About Us Image">
+        </div>
+    </div>
+
+
+    <!-- Contact Section -->
+    <div class="contact-section">
+        <h2>Contact Us</h2>
+        <p>Email: contact@estudysphere.com</p>
+        <p>Phone: +1 123-456-7890</p>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2023 E-learning StudySphere. All rights reserved.</p>
+    </div>
+    <!-- Add your scripts and other necessary tags here -->
+</body>
+</html>

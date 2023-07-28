@@ -1,0 +1,118 @@
+{% extends 'root.html' %}
+
+{% block content %}
+<style>
+  /* Custom CSS for the Course Contents page */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+      background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+                background-image: url("/media/pencils-eraser-white-background.jpg");
+
+  }
+
+  .main {
+    background-color: #023181;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .main h1 {
+    font-size: 28px;
+    font-weight: bold;
+   text-align: center;
+
+  }
+  .course-content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+padding: 40px 40px;
+  }
+
+  .course-details {
+    max-width: 800px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-align: center;
+  }
+
+  .course-details h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #007BFF;
+  }
+
+  .course-details p {
+    margin-bottom: 20px;
+  }
+
+  .course-files {
+    max-width: 800px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+  }
+
+  .file-item {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .file-item h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: #007BFF;
+      font-size: 20px;
+  }
+
+  .file-item button {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .file-item button:hover {
+    background-color: #0056b3;
+  }
+</style>
+
+<div class="main">
+  <h1> Course Content</h1>
+</div>
+
+<div class="course-content-container">
+  <div class="course-details">
+    <h2>{{ course.title }} </h2>
+    <p>{{ course.description }}</p>
+  </div>
+<br>
+    <br>
+  <div class="course-files">
+    {% for file in course.course_file.all %}
+      <div class="file-item">
+        <h4>{{ file.file }}</h4>
+        <a href="{{ file.file.url }}" download>
+          <button style="background-color: darkcyan;">Download</button>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

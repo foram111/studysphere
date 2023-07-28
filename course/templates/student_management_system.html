@@ -1,0 +1,116 @@
+{% extends 'root.html' %}
+
+{% block content %}
+<style>
+  /* Custom CSS for the Student Management System */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-image: url("/media/abstract-marble-texture-black-white-grey-background-handmade-technique.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .navbar {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .management-system-container {
+    max-width: 800px;
+    margin: 190px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+  }
+
+  .management-system-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #007BFF;
+  }
+
+  .management-system-container table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ccc;
+  }
+
+  .management-system-container th,
+  .management-system-container td {
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: center;
+  }
+
+  .management-system-container thead {
+    background-color: #f2f2f2;
+  }
+
+  /* Dashboard-like appearance */
+  .navbar h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .management-system-container h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007BFF;
+  }
+
+  .management-system-container table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+  }
+
+  .management-system-container th,
+  .management-system-container td {
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: center;
+  }
+
+  .management-system-container th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+</style>
+
+<div class="management-system-container">
+  <h2 style="color: #023181">Student Management System</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Student Username</th>
+        <th>Full Name</th>
+        <th>Overall Grade</th>
+        <th>Attendance</th>
+        <th>Active Plan</th>
+        <!-- Add any other user profile fields you want to display -->
+      </tr>
+    </thead>
+    <tbody>
+      {% for student in students %}
+        <tr>
+          <td>{{ student.user.username }}</td>
+          <td>{{ student.first_name }} {{ student.last_name }}</td>
+          <td>{{ student.grade }}</td>
+          <td>{{ student.attendance }}</td>
+          <td>{{ student.plan }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

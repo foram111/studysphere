@@ -1,0 +1,93 @@
+{% extends 'root.html' %}
+
+{% block content %}
+<style>
+  body {
+       font-family: Arial, sans-serif;
+    background-image: url("/media/abstract-marble-texture-black-white-grey-background-handmade-technique.jpg");
+    margin-top: 140px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: Arial, sans-serif;
+
+  }
+
+  .create-course-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+  }
+
+  .create-course-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #007BFF;
+  }
+
+  .create-course-container label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .create-course-container input[type="text"],
+  .create-course-container textarea,
+  .create-course-container input[type="file"],
+  .create-course-container input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+  }
+
+  .create-course-container textarea {
+    resize: vertical;
+  }
+
+  .create-course-container button {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  .create-course-container button:hover {
+    background-color: #0056b3;
+  }
+</style>
+
+<div class="create-course-container">
+  <h2>Create a New Course</h2>
+  <form method="post" action="{% url 'create_course_submit' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+      <label for="id_title">Title:</label>
+      <input type="text" id="id_title" name="title" required>
+    </div>
+    <div>
+      <label for="id_description">Description:</label>
+      <textarea id="id_description" name="description" rows="4" required></textarea>
+    </div>
+    <div>
+      <label for="id_total_hours">Total Hours:</label>
+      <input type="number" id="id_total_hours" name="total_hours" required>
+    </div>
+    <div>
+      <label for="id_files">Course Files:</label>
+      <input type="file" id="id_files" name="files" multiple required>
+    </div>
+    <button type="submit">Create Course</button>
+  </form>
+</div>
+<br>
+<br>
+<br>
+{% endblock %}

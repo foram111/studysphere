@@ -1,0 +1,115 @@
+{% extends 'root.html' %}
+
+{% block content %}
+<style type="text/css">
+  /* Custom CSS for the registration form box */
+  body {
+    font-family: Arial, sans-serif;
+    background-image: url("/media/abstract-marble-texture-black-white-grey-background-handmade-technique.jpg");
+    background-color: whitesmoke;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Adjust header style */
+
+
+  /* Adjust footer style */
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #f8f8f8;
+    color: #333;
+    padding: 10px;
+    text-align: center;
+  }
+
+  /* Adjust content style */
+  .content {
+    padding: 120px 20px 60px; /* Add appropriate padding to avoid overlap */
+    display: flex;
+    justify-content: center;
+  }
+
+  .register-container {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 50px;
+    max-width: 600px; /* Adjust the max-width to make the form broader */
+    width: 100%;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #0056b3;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    width: 100%;
+  }
+
+  button {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  .register-container a {
+    text-align: center;
+    display: block;
+    color: #0056b3;
+    text-decoration: none;
+  }
+
+  .register-container a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<div class="content">
+  <div class="register-container">
+    <h2>Register</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ user_form.as_p }}
+      {{ profile_form.as_p }}
+      <button type="submit">Register</button>
+    </form>
+  </div>
+</div>
+<br>
+<br>
+
+{% endblock %}
+

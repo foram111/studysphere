@@ -1,0 +1,69 @@
+{% load static %} <!-- Load static template tag if not already loaded -->
+
+<style type="text/css">
+  /* Custom CSS for the navigation bar */
+  .navbar {
+    background-color: #f8f8f8;
+    height: 80px;
+    /* Background color for the navigation bar */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .navbar-nav .nav-link {
+    color: darkcyan; /* Text color for the navigation links */
+    /* Add any additional styles you want to apply to the navigation links */
+  }
+
+  .navbar-nav .nav-link:hover {
+    color: darkcyan; /* Text color for the navigation links on hover */
+    /* Add any additional styles you want to apply to the navigation links on hover */
+  }
+
+  .navbar-nav .nav-link.disabled {
+    /* Customize the styles for the "Welcome" text */
+    /* Add any additional styles you want to apply to the "Welcome" text */
+  }
+
+  .navbar-nav .nav-logo {
+    margin-top: 20px;
+    /* Customize the styles for the logo image */
+    /* Add any additional styles you want to apply to the logo image */
+  }
+
+  .navbar-nav .user-name {
+    margin-top: 30px;
+    color: darkcyan;
+    font-weight: bold;
+  }
+</style>
+
+<title>StudySphere</title>
+
+<nav class="navbar navbar-expand-sm fixed-top border-bottom-shadow-sm">
+  <div class="container-fluid d-flex">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <img src="/media/attachment_32550797-removebg-preview.png" alt="Welcome" class="nav-logo" style="width: 120px; top: 10px;">
+      </li>
+    </ul>
+
+    <!-- Right-aligned navigation links -->
+    <ul class="navbar-nav ml-auto">
+      {% if request.user.is_authenticated %}
+      <li class="nav-item">
+        <p class="user-name">Welcome, {{ request.user.username }}</p>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'register' %}">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'login' %}">Login</a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>

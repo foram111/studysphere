@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard - E-learning Platform</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-image: url("/media/pencils-eraser-white-background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+        }
+
+        .navbar {
+            background-color: darkblue;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .dashboard-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+        }
+
+        .dashboard-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .course-item {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            justify-content: space-between; /* New property to space items evenly */
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+
+        .course-item h3 {
+            margin-top: 0;
+            color: #007BFF;
+        }
+
+        .course-item p {
+            margin-bottom: 15px;
+        }
+
+        .dashboard-container .button-group {
+            text-align: left;
+            margin-top: 10px;
+        }
+
+        .dashboard-container .button-group button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .dashboard-container .button-group button:last-child {
+            margin-right: 0;
+        }
+
+        .dashboard-container .button-group button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>Studysphere</h1>
+                <h2 style="color: white;">Welcome, {{ user.username }}</h2>
+
+
+    </div>
+
+    <div class="dashboard-container">
+        <h2>Welcome to the Student Dashboard</h2>
+        {% if courses %}
+            {% for course in courses %}
+                <div class="course-item">
+                    <h3>{{ course.title }}</h3>
+                    <p>{{ course.description }}</p>
+                    <h5>Total hours: {{ course.total_hours }}</h5>
+                    <div>
+                        <a href="{% url 'view_course_contents' course.id %}">
+                            <button>View Course</button>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No courses available for your plan and course type.</p>
+        {% endif %}
+
+        {% if student_plan == 'free' %}
+            <div class="button-group">
+                <form method="post" action="{% url 'upgrade_plan' %}">
+                    {% csrf_token %}
+                    <button type="submit">Upgrade to premium</button>
+                </form>
+            </div>
+        {% endif %}
+        <div class="button-group">
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

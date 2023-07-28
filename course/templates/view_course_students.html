@@ -1,0 +1,26 @@
+{% block content %}
+  <h2>Students enrolled in {{ course.title }}</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Student</th>
+        <th>Attendance</th>
+        <th>Grades</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for student in students %}
+        <tr>
+          <td>{{ student.user.username }}</td>
+          <td>
+            <input type="text" name="attendance_{{ student.id }}" value="{{ student.attendance }}">
+          </td>
+          <td>
+            <input type="text" name="grades_{{ student.id }}" value="{{ student.grades }}">
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <button type="submit">Update Student Details</button>
+{% endblock %}

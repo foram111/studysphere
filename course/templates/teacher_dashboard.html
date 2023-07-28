@@ -1,0 +1,187 @@
+{% extends 'root.html' %}
+
+{% block content %}
+<style>
+  /* Custom CSS for the Dashboard-like Payment Page */
+  body {
+    background-image: url("/media/pencils-eraser-white-background.jpg");
+    margin-top: 140px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+
+   .main {
+    background-color: #023181;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .payment-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+  }
+
+  .payment-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #007BFF;
+  }
+
+  .course-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+  }
+
+  .course-item h4 {
+    margin-top: 0;
+    color: darkcyan;
+    font-size: 20px;
+  }
+
+  .course-item p {
+    margin-bottom: 15px;
+  }
+
+  .payment-container .button-group {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .payment-container .button-group button {
+    background-color: darkcyan;
+    color: #fff;
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  .payment-container .button-group button:last-child {
+    margin-right: 0;
+  }
+
+  .payment-container .button-group button:hover {
+    background-color: #0056b3;
+  }
+
+  .payment-container .button-group form {
+    display: inline-block;
+  }
+
+  .payment-container .button-group form button {
+    margin-right: 10px;
+  }
+
+  .payment-container .button-group form:last-child button {
+    margin-right: 0;
+  }
+
+  /* Dashboard-like appearance */
+
+  .main h1 {
+    font-size: 28px;
+    font-weight: bold;
+   text-align: center;
+
+  }
+  .payment-container h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007BFF;
+  }
+
+  .course-item h4 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #007BFF;
+  }
+
+  .payment-container .button-group button {
+    font-size: 16px;
+    padding: 12px 40px;
+    border-radius: 8px;
+  }
+
+  .payment-container .button-group form button {
+    margin-right: 12px;
+  }
+
+  .container-box{
+     max-width: 800px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin-top: 20px;
+
+  }
+</style>
+
+<div class="main">
+  <h1>Welcome to StudySphere Mentor dashboard</h1>
+</div>
+
+<div class="payment-container">
+  <h2 style="color: darkcyan">Welcome, {{ user.username }}</h2>
+  <br>
+  <br>
+  <h3 style="text-align: center; color: #023181;">Your Courses</h3>
+
+<div class="container-box">
+  {% for course in courses %}
+    <div class="course-item">
+      <h4>{{ course.title }}</h4>
+      <p>{{ course.description }}</p>
+      <h5>Total hours: {{ course.total_hours }}</h5>
+      <div class="button-group">
+        <a href="{% url 'view_course_contents' course.id %}">
+          <button>View Course</button>
+        </a>
+        <a href="{% url 'update_course' course.id %}">
+          <button>Update Course</button>
+        </a>
+      </div>
+    </div>
+  {% endfor %}
+
+  </div>
+
+  <br>
+  <br>
+  <div class="button-group">
+    <a href="{% url 'create_course' %}">
+      <button>Create New Course</button>
+    </a>
+  </div>
+
+  <div class="button-group">
+    <a href="{% url 'student_management_system' %}">
+      <button>Go to Student Management System</button>
+    </a>
+  </div>
+
+  <div class="button-group">
+    <form method="post" action="{% url 'logout' %}">
+      {% csrf_token %}
+      <button type="submit">Logout</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
